@@ -3,278 +3,221 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Orivon Minds</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <title>Orivon Minds – Automatización Inteligente</title>
+
+  <!-- Fuentes -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
   <style>
-    /* ====== RESET ====== */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    /* RESET */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: 'Roboto', sans-serif;
-      line-height: 1.6;
-      color: #111;
-      background-color: #f9f9f9;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.65;
+      color: #1d1f21;
+      background: #f5f7fa;
     }
+    img { max-width: 100%; display: block; border-radius: 10px; }
 
-    a {
-      text-decoration: none;
-      color: inherit;
+    a.button {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: #007bff;
+      color: white;
+      border-radius: 10px;
+      font-weight: 600;
+      transition: 0.25s;
     }
+    a.button:hover { background: #0064d6; transform: translateY(-2px); }
 
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    button {
-      cursor: pointer;
-    }
-
-    /* ====== CONTAINER ====== */
     .container {
       width: 90%;
       max-width: 1200px;
-      margin: 0 auto;
+      margin: auto;
     }
 
-    /* ====== HERO ====== */
+    /* ===== HEADER ===== */
     header {
+      background: #0d1117;
+      padding: 1.5rem 0;
       display: flex;
+      justify-content: center;
       align-items: center;
-      justify-content: space-between;
-      padding: 2rem 0;
-      background-color: #0d1117;
-      color: #fff;
-      flex-wrap: wrap;
     }
+    header img { height: 55px; }
 
-    header .logo img {
-      height: 50px;
-    }
-
+    /* ===== HERO ===== */
     .hero {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      padding: 6rem 1rem;
       text-align: center;
-      padding: 4rem 1rem;
-      background: url('images/hero-bg.jpg') no-repeat center center/cover;
       color: #fff;
+      background: linear-gradient(135deg, #0d1117, #1a2532);
     }
-
     .hero h1 {
-      font-size: 2.5rem;
+      font-size: 2.8rem;
+      font-weight: 700;
       margin-bottom: 1rem;
     }
-
     .hero p {
+      max-width: 650px;
+      margin: auto;
       font-size: 1.2rem;
+      opacity: 0.9;
       margin-bottom: 2rem;
-      max-width: 700px;
     }
 
-    .hero a.button {
-      background-color: #00bfff;
-      padding: 1rem 2rem;
-      color: #fff;
-      border-radius: 8px;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-
-    .hero a.button:hover {
-      background-color: #009acd;
-    }
-
-    /* ====== SECCIONES ====== */
-    section {
-      padding: 4rem 1rem;
-    }
-
-    section h2 {
-      text-align: center;
-      font-size: 2rem;
-      margin-bottom: 2rem;
-      color: #0d1117;
-    }
-
-    /* Sobre la empresa */
+    /* ===== SOBRE ===== */
     .about {
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 3rem;
       align-items: center;
-      gap: 2rem;
+      padding: 5rem 0;
+    }
+    .about p { margin-bottom: 1rem; font-size: 1.05rem; }
+
+    @media (max-width: 850px) {
+      .about { grid-template-columns: 1fr; text-align: center; }
     }
 
-    .about img {
-      flex: 1 1 300px;
-      border-radius: 10px;
-    }
-
-    .about .text {
-      flex: 2 1 400px;
-    }
-
-    /* Servicios */
+    /* ===== SERVICIOS ===== */
     .services {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: center;
-    }
-
-    .service-card {
-      background-color: #fff;
-      padding: 2rem;
-      border-radius: 10px;
-      flex: 1 1 250px;
+      padding: 5rem 0;
       text-align: center;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      transition: 0.3s;
     }
-
-    .service-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .service-card img {
-      height: 60px;
-      margin-bottom: 1rem;
-    }
-
-    /* Testimonios */
-    .testimonials {
-      display: flex;
-      flex-direction: column;
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 2rem;
-      max-width: 800px;
-      margin: 0 auto;
+      margin-top: 2rem;
     }
-
-    .testimonial-card {
-      background-color: #0d1117;
-      color: #fff;
+    .service-card {
+      background: white;
       padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      transition: 0.25s;
+    }
+    .service-card:hover { transform: translateY(-5px); }
+
+    .service-card img { height: 55px; margin-bottom: 1rem; }
+
+    /* ===== TESTIMONIOS ===== */
+    .testimonials {
+      padding: 5rem 0;
+    }
+    .testimonial {
+      background: #0d1117;
+      color: white;
+      padding: 2rem;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.25);
     }
 
-    /* Contacto */
+    /* ===== CONTACTO ===== */
     .contact {
       text-align: center;
+      padding: 5rem 0;
+    }
+    .contact p {
+      max-width: 600px;
+      margin: 1rem auto 2rem;
+      font-size: 1.1rem;
     }
 
-    .contact a.button {
-      background-color: #00bfff;
-      padding: 1rem 2rem;
-      color: #fff;
-      border-radius: 8px;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-
-    .contact a.button:hover {
-      background-color: #009acd;
-    }
-
-    /* Footer */
+    /* ===== FOOTER ===== */
     footer {
+      background: #0d1117;
+      color: white;
+      padding: 2rem;
       text-align: center;
-      padding: 2rem 1rem;
-      background-color: #111;
-      color: #fff;
+      margin-top: 3rem;
     }
-
-    /* ====== RESPONSIVE ====== */
-    @media (max-width: 768px) {
-      .about {
-        flex-direction: column;
-        text-align: center;
-      }
-      .about .text {
-        flex: 1;
-      }
-    }
+    footer img { height: 40px; margin-bottom: .7rem; }
   </style>
 </head>
+
 <body>
 
-  <!-- HEADER / LOGO -->
-  <header class="container">
-    <div class="logo">
-      <img src="images/logo.png" alt="Orivon Minds Logo">
-    </div>
+  <!-- HEADER -->
+  <header>
+    <img src="images/logo.png" alt="Orivon Minds Logo">
   </header>
 
   <!-- HERO -->
   <section class="hero">
-    <h1>Orivon Minds – Automatización inteligente para impulsar tu empresa</h1>
-    <p>Optimizamos procesos, reducimos cargas repetitivas y potenciamos la productividad de tu negocio mediante soluciones tecnológicas simples, eficientes y personalizadas.</p>
-    <a href="mailto:TU_CORREO" class="button">Contáctame</a>
+    <h1>Automatización inteligente para hacer crecer tu empresa</h1>
+    <p>Transforma tareas repetitivas en procesos automáticos, reduce costes y mejora la productividad de tu negocio con soluciones tecnológicas creadas a tu medida.</p>
+    <a href="mailto:TU_CORREO" class="button">Quiero más información</a>
   </section>
 
   <!-- SOBRE LA EMPRESA -->
-  <section class="about container">
-    <img src="images/anton.jpg" alt="Antón Piñeiro">
-    <div class="text">
-      <h2>Sobre Orivon Minds</h2>
-      <p>Soy <strong>Antón Piñeiro</strong>, fundador de Orivon Minds. Mi misión es ayudar a empresas a mejorar su eficiencia mediante sistemas de automatización modernos, inteligentes y adaptados al día a día real de cada negocio.</p>
-      <p>Transformo tareas repetitivas en procesos automáticos para que tu empresa pueda enfocarse en lo que realmente importa: crecer.</p>
+  <section class="container about">
+    <img src="images/anton.jpg" alt="Foto del fundador trabajando">
+    <div>
+      <h2>Quién está detrás de Orivon Minds</h2>
+      <p>Soy <strong>Antón Piñeiro</strong>, especialista en automatización y optimización de procesos. Ayudo a empresas a eliminar tareas manuales y a construir sistemas que trabajan solos.</p>
+      <p>Mi misión es simple: que tu negocio funcione más rápido, más barato y con menos errores.</p>
+      <p>Si quieres ganar tiempo y centrarte en lo que realmente impulsa tus ingresos, puedo ayudarte.</p>
     </div>
   </section>
 
   <!-- SERVICIOS -->
   <section class="services container">
-    <h2>Servicios</h2>
-    <div class="service-card">
-      <img src="images/automatizacion.png" alt="Automatización de procesos">
-      <h3>Automatización de procesos internos</h3>
-      <p>Identifico tareas repetitivas y las convierto en flujos automáticos que ahorran tiempo y reducen errores.</p>
-    </div>
-    <div class="service-card">
-      <img src="images/integracion.png" alt="Integración de herramientas">
-      <h3>Integración de herramientas digitales</h3>
-      <p>Conecto tus aplicaciones actuales (CRM, ERP, emails, formularios, bases de datos…) para que todo funcione como un único sistema.</p>
-    </div>
-    <div class="service-card">
-      <img src="images/optimizacion.png" alt="Optimización de flujos">
-      <h3>Optimización de flujos de trabajo</h3>
-      <p>Mejoro tus procesos actuales para aumentar la productividad y eliminar pasos innecesarios.</p>
-    </div>
-    <div class="service-card">
-      <img src="images/consultoria.png" alt="Consultoría tecnológica">
-      <h3>Consultoría tecnológica personalizada</h3>
-      <p>Analizo tu empresa y te propongo soluciones 100% adaptadas a tus necesidades.</p>
+    <h2>Soluciones diseñadas para hacer tu empresa más eficiente</h2>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <img src="images/automatizacion.png">
+        <h3>Automatización de procesos internos</h3>
+        <p>Detecto tus tareas repetitivas y las convierto en flujos automáticos que ahorran horas cada semana.</p>
+      </div>
+
+      <div class="service-card">
+        <img src="images/integracion.png">
+        <h3>Integración de herramientas</h3>
+        <p>Conecto tus sistemas (CRM, ERP, emails, bases de datos…) para que trabajen como uno solo.</p>
+      </div>
+
+      <div class="service-card">
+        <img src="images/optimizacion.png">
+        <h3>Optimización de procesos</h3>
+        <p>Mejoro tus flujos actuales para aumentar la productividad y reducir errores.</p>
+      </div>
+
+      <div class="service-card">
+        <img src="images/consultoria.png">
+        <h3>Consultoría tecnológica</h3>
+        <p>Analizo tu empresa y te propongo soluciones claras, simples y adaptadas a tu realidad.</p>
+      </div>
     </div>
   </section>
 
   <!-- TESTIMONIOS -->
   <section class="testimonials container">
-    <h2>Resultados que hablan por sí mismos</h2>
-    <div class="testimonial-card">
-      <p>“Gracias a Orivon Minds redujimos un 40% del tiempo dedicado a tareas repetitivas en solo 3 meses.” – Empresa cliente</p>
+    <h2>Lo que dicen mis clientes</h2>
+
+    <div class="testimonial">
+      “Automatizamos procesos clave y logramos reducir un 40% del tiempo dedicado a tareas manuales.”
     </div>
-    <div class="testimonial-card">
-      <p>“La integración de herramientas nos permitió centralizar las operaciones y evitar errores manuales.” – Negocio digital</p>
+
+    <div class="testimonial">
+      “Integrar nuestras herramientas nos permitió eliminar errores y centralizar toda la operativa.”
     </div>
   </section>
 
   <!-- CONTACTO -->
   <section class="contact container">
-    <h2>Hablemos sobre tu empresa</h2>
-    <p>Cuéntame qué hace tu negocio y qué tareas te consumen tiempo. Te mostraré cómo la automatización puede ayudarte a avanzar más rápido.</p>
-    <a href="mailto:TU_CORREO" class="button">Escríbeme</a>
+    <h2>¿Listo para llevar tu empresa al siguiente nivel?</h2>
+    <p>Cuéntame qué te consume tiempo hoy. Te mostraré cómo convertirlo en procesos automáticos que trabajen por ti.</p>
+    <a href="mailto:TU_CORREO" class="button">Escríbeme ahora</a>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <img src="images/logo.png" alt="Orivon Minds Logo" style="height:40px; margin-bottom:1rem;">
-    <p>Orivon Minds © 2025. Todos los derechos reservados.</p>
+    <img src="images/logo.png" alt="Orivon Minds Logo">
+    <p>Orivon Minds © 2025 – Soluciones de automatización para empresas.</p>
   </footer>
 
 </body>
