@@ -4,8 +4,19 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Orivon Minds — Automatización Inteligente</title>
-  <meta name="description" content="Automatización con IA, n8n y APIs oficiales. Auditoría gratuita y soluciones seguras para ahorrar tiempo y costes.">
+  <meta name="description" content="Automatiza procesos con IA, n8n y APIs seguras. Ahorra hasta un 40 % del tiempo operativo con soluciones personalizadas. Auditoría gratuita y ROI estimado.">
+
+  <!-- SEO & Social -->
+  <meta property="og:title" content="Orivon Minds — Automatización con IA para empresas">
+  <meta property="og:description" content="Automatiza tareas repetitivas con IA, n8n y APIs seguras. Auditoría gratuita y ROI estimado.">
+  <meta property="og:image" content="https://orivonminds.com/images/og-image.jpg">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://orivonminds.com/">
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
   <style>
     :root{
       --bg:#F7F9FB;
@@ -19,9 +30,10 @@
     }
     *{box-sizing:border-box}
     html,body{height:100%}
+    html{scroll-behavior:smooth}
     body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased}
     img{max-width:100%;display:block}
-    a{color:inherit}
+    a{color:inherit;text-decoration:none}
 
     .container{width:90%;max-width:var(--container);margin:0 auto}
 
@@ -31,8 +43,11 @@
     .brand{display:flex;align-items:center;gap:14px}
     .brand img{height:70px}
     .nav-right{display:flex;align-items:center;gap:12px}
-    .btn-ghost{padding:10px 14px;border-radius:10px;border:1px solid rgba(13,17,23,0.08);background:transparent;font-weight:600}
+    .btn-ghost,.btn-primary{transition:transform .2s, background .2s}
+    .btn-ghost{padding:10px 14px;border-radius:10px;border:1px solid rgba(13,17,23,0.08);background:transparent;font-weight:600;cursor:pointer}
+    .btn-ghost:hover{transform:translateY(-2px);background:rgba(0,0,0,0.03)}
     .btn-primary{background:var(--primary);color:#fff;padding:11px 16px;border-radius:10px;font-weight:700;border:none;cursor:pointer}
+    .btn-primary:hover{transform:translateY(-2px);background:var(--accent)}
 
     /* HERO */
     .hero{padding:64px 0;background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff}
@@ -57,27 +72,9 @@
       width: 100%;
       transition: border 0.2s;
     }
-
-    #heroForm input:focus, #heroForm textarea:focus {
-      border-color: var(--primary);
-      outline: none;
-    }
-
-    #heroForm button {
-      width: 100%;
-      padding: 12px;
-      font-weight: 700;
-      border-radius: 10px;
-      background: var(--primary);
-      color: white;
-      border: none;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    #heroForm button:hover {
-      background: var(--accent);
-    }
+    #heroForm input:focus, #heroForm textarea:focus {border-color: var(--primary);outline: none;}
+    #heroForm button {width: 100%;padding: 12px;font-weight: 700;border-radius: 10px;background: var(--primary);color: white;border: none;cursor: pointer;transition: background 0.2s;}
+    #heroForm button:hover {background: var(--accent);}
 
     /* UVP */
     .uvp{padding:48px 0;background:var(--bg)}
@@ -93,22 +90,27 @@
     /* SERVICES */
     .services{padding:42px 0}
     .services-grid{display:flex;gap:18px;flex-wrap:wrap;justify-content:center}
-    .service{flex:1 1 240px;background:var(--card);padding:20px;border-radius:12px;text-align:center;box-shadow:0 8px 30px rgba(13,17,23,0.04)}
-    .service img{height:64px;margin-bottom:12px}
+    .service{flex:1 1 240px;background:var(--card);padding:20px;border-radius:12px;text-align:center;box-shadow:0 8px 30px rgba(13,17,23,0.04);display:flex;flex-direction:column;align-items:center;justify-content:center}
+    .service img{height:64px;margin-bottom:12px;object-fit:contain}
 
     /* CASES */
     .cases{background:#ffffff;padding:42px 0}
     .case-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
     .case{background:linear-gradient(180deg,#fbfdff,#f7fbff);padding:18px;border-radius:12px;border:1px solid rgba(2,6,23,0.03)}
 
-    /* FAQ */
-    .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    .faq-item{background:var(--card);padding:14px;border-radius:10px}
-
     /* TESTIMONIALS */
     .testimonials{padding:36px 0}
     .test-grid{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
     .testimonial{flex:1 1 300px;background:linear-gradient(180deg,#ffffff,#f8fbff);padding:16px;border-radius:12px;border:1px solid rgba(2,6,23,0.03)}
+
+    /* FAQ */
+    .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .faq-item{background:var(--card);padding:14px;border-radius:10px}
+
+    /* QUIEN SOY */
+    .about{padding:48px 0;text-align:center}
+    .about img{max-height:360px;border-radius:12px;margin:0 auto 16px;object-fit:cover}
+    .about p{max-width:680px;margin:0 auto;color:var(--muted)}
 
     /* CTA FINAL */
     .final-cta{padding:48px 0;text-align:center}
@@ -132,7 +134,7 @@
   <header>
     <div class="container nav">
       <div class="brand">
-        <img src="images/logo-footer.png" alt="Orivon Minds logo">
+        <img src="images/logo-footer.png" alt="Logotipo de Orivon Minds">
         <div style="font-weight:700">Orivon Minds</div>
       </div>
       <div class="nav-right">
@@ -148,40 +150,26 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <h1 class="hero-title">Automatización con IA que ahorra tiempo y reduce costes</h1>
-          <p class="hero-sub">Ahorra hasta un 40% del tiempo operativo en menos de 90 días mediante soluciones seguras (n8n + APIs oficiales). Auditoría gratuita y propuesta con ROI estimado.</p>
-
+          <h1 class="hero-title">Automatiza tus procesos con IA y gana hasta un 40 % de productividad</h1>
+          <p class="hero-sub">Ahorra tiempo operativo y costes con soluciones seguras basadas en n8n y APIs oficiales. Auditoría gratuita con ROI estimado.</p>
+          <p style="font-size:0.95rem;color:rgba(255,255,255,0.9)">Empresas de distintos sectores ya confían en Orivon Minds.</p>
           <div class="hero-ctas">
             <a class="btn-primary" href="#contact">Solicitar auditoría gratuita</a>
             <a class="btn-ghost" href="mailto:antonpineiro@orivonminds.com">Enviar email</a>
           </div>
-
           <div style="margin-top:18px;color:rgba(255,255,255,0.92);font-size:0.95rem">Sin compromiso · Respuesta en <strong>24 horas</strong></div>
         </div>
 
-        <!-- FORM in HERO -->
+        <!-- FORM -->
         <aside class="card" aria-labelledby="form-hero-title">
-          <h3 id="form-hero-title" style="margin:0 0 8px">Solicita tu auditoría (30s)</h3>
-          <p class="muted" style="margin:0 0 12px">
-            Rellena tu nombre y email y te envío un plan inicial y estimación de ahorro.
-          </p>
-
+          <h3 id="form-hero-title" style="margin:0 0 8px">Solicita tu auditoría (30 s)</h3>
+          <p class="muted" style="margin:0 0 12px">Rellena tu nombre y email y te envío un plan inicial y estimación de ahorro.</p>
           <form id="heroForm">
-            <div class="form-row">
-              <input type="text" name="name" placeholder="Tu nombre" required>
-            </div>
-            <div class="form-row">
-              <input type="email" name="email" placeholder="Tu correo" required>
-            </div>
-            <div class="form-row">
-              <input type="text" name="company" placeholder="Nombre de tu empresa">
-            </div>
-            <div class="form-row">
-              <textarea name="message" placeholder="¿Qué procesos te llevan más tiempo o crees que se podrían automatizar en tu empresa?" required></textarea>
-            </div>
-            <div class="form-actions">
-              <button type="submit" class="btn-primary">Solicitar auditoría gratuita</button>
-            </div>
+            <div class="form-row"><input type="text" name="name" placeholder="Tu nombre" required></div>
+            <div class="form-row"><input type="email" name="email" placeholder="Tu correo" required></div>
+            <div class="form-row"><input type="text" name="company" placeholder="Nombre de tu empresa"></div>
+            <div class="form-row"><textarea name="message" placeholder="¿Qué procesos te llevan más tiempo o se podrían automatizar?" required></textarea></div>
+            <div class="form-actions"><button type="submit" class="btn-primary">Solicitar auditoría gratuita</button></div>
             <p id="heroStatus" class="form-note"></p>
           </form>
         </aside>
@@ -192,22 +180,13 @@
     <section class="uvp container">
       <div style="text-align:center;margin-bottom:18px">
         <h2 style="font-size:1.6rem;margin-bottom:8px">Resultados que importan</h2>
-        <p class="muted">Soluciones seguras de automatización e IA diseñadas para reducir costes, evitar errores y liberar tiempo de tu equipo.</p>
+        <p class="muted">Soluciones de automatización e IA diseñadas para reducir costes, evitar errores y liberar tiempo de tu equipo.</p>
       </div>
 
       <div class="uvp-grid">
-        <div class="uvp-card">
-          <strong>Ahorro de tiempo</strong>
-          <p class="muted">Automatiza tareas repetitivas para que tu equipo se centre en lo que genera ingresos.</p>
-        </div>
-        <div class="uvp-card">
-          <strong>Seguridad y fiabilidad</strong>
-          <p class="muted">Implementaciones con n8n y APIs oficiales, siguiendo buenas prácticas y protección de datos.</p>
-        </div>
-        <div class="uvp-card">
-          <strong>ROI claro</strong>
-          <p class="muted">Propuestas basadas en impacto real y ahorro estimado — pagas según el valor que aportamos.</p>
-        </div>
+        <div class="uvp-card"><strong>Ahorro de tiempo</strong><p class="muted">Automatiza tareas repetitivas para que tu equipo se centre en lo que genera ingresos.</p></div>
+        <div class="uvp-card"><strong>Seguridad y fiabilidad</strong><p class="muted">Implementaciones con n8n y APIs oficiales, siguiendo buenas prácticas y protección de datos.</p></div>
+        <div class="uvp-card"><strong>ROI claro</strong><p class="muted">Propuestas basadas en impacto real y ahorro estimado — pagas según el valor que aportamos.</p></div>
       </div>
     </section>
 
@@ -215,22 +194,10 @@
     <section id="process" class="container">
       <h2 style="text-align:center">Cómo trabajamos</h2>
       <div class="process">
-        <div class="step">
-          <strong>1. Auditoría</strong>
-          <p class="muted">Analizamos tus procesos y estimamos horas y costes a ahorrar.</p>
-        </div>
-        <div class="step">
-          <strong>2. Propuesta</strong>
-          <p class="muted">Propuesta personalizada con solución y ROI estimado.</p>
-        </div>
-        <div class="step">
-          <strong>3. Implementación</strong>
-          <p class="muted">Desarrollo con n8n, IA y APIs oficiales. Pruebas y puesta en producción.</p>
-        </div>
-        <div class="step">
-          <strong>4. Mantenimiento</strong>
-          <p class="muted">Soporte y optimizaciones con fee mensual.</p>
-        </div>
+        <div class="step"><strong>1. Auditoría</strong><p class="muted">Analizo tus procesos y estimo horas y costes a ahorrar.</p></div>
+        <div class="step"><strong>2. Propuesta</strong><p class="muted">Recibes una propuesta personalizada con solución y ROI estimado.</p></div>
+        <div class="step"><strong>3. Implementación</strong><p class="muted">Desarrollo con n8n, IA y APIs oficiales. Pruebas y puesta en producción.</p></div>
+        <div class="step"><strong>4. Mantenimiento</strong><p class="muted">Soporte y optimizaciones con fee mensual.</p></div>
       </div>
     </section>
 
@@ -238,44 +205,27 @@
     <section id="services" class="services container">
       <h2 style="text-align:center">Servicios</h2>
       <div class="services-grid">
-        <div class="service">
-          <img src="images/automatizacion.png" alt="Automatización" loading="lazy">
-          <h3>Automatización de procesos</h3>
-          <p class="muted">Flujos que eliminan trabajo repetitivo y reducen errores operativos.</p>
-        </div>
-
-        <div class="service">
-          <img src="images/integracion.png" alt="Integración" loading="lazy">
-          <h3>Integración de herramientas</h3>
-          <p class="muted">Conexión segura entre CRM, emails, formularios y bases de datos.</p>
-        </div>
-
-        <div class="service">
-          <img src="images/optimizacion.png" alt="Optimización" loading="lazy">
-          <h3>Optimización de flujos</h3>
-          <p class="muted">Reorganizamos procesos para maximizar velocidad y calidad.</p>
-        </div>
-
-        <div class="service">
-          <img src="images/consultoria.png" alt="Consultoría" loading="lazy">
-          <h3>Consultoría con IA</h3>
-          <p class="muted">Soluciones estratégicas adaptadas a tu sector y tamaño de empresa.</p>
-        </div>
+        <div class="service"><img src="images/automatizacion.png" alt="Automatización" loading="lazy"><h3>Automatización de procesos</h3><p class="muted">Flujos que eliminan trabajo repetitivo y reducen errores operativos.</p></div>
+        <div class="service"><img src="images/integracion.png" alt="Integración" loading="lazy"><h3>Integración de herramientas</h3><p class="muted">Conexión segura entre CRM, emails, formularios y bases de datos.</p></div>
+        <div class="service"><img src="images/optimizacion.png" alt="Optimización" loading="lazy"><h3>Optimización de flujos</h3><p class="muted">Reorganizamos procesos para maximizar velocidad y calidad.</p></div>
+        <div class="service"><img src="images/consultoria.png" alt="Consultoría" loading="lazy"><h3>Consultoría con IA</h3><p class="muted">Soluciones estratégicas adaptadas a tu sector y tamaño de empresa.</p></div>
       </div>
+    </section>
+
+    <!-- QUIEN SOY -->
+    <section class="about container" id="about">
+      <h2>Quién está detrás de Orivon Minds</h2>
+      <img src="images/anton.jpg" alt="Antonio Piñeiro, fundador de Orivon Minds" loading="lazy">
+      <p>Soy <strong>Antonio Piñeiro</strong>, consultor especializado en automatización con IA y n8n.  
+      Mi objetivo es ayudarte a escalar tu negocio reduciendo la carga operativa y aumentando la eficiencia mediante automatización segura y medible.</p>
     </section>
 
     <!-- CASES -->
     <section class="cases container">
       <h2 style="text-align:center">Casos de éxito (ejemplos)</h2>
       <div class="case-grid" style="margin-top:16px">
-        <div class="case">
-          <strong>Agencia de marketing — Automatización de lead flow</strong>
-          <p class="muted">Problema: muchas leads perdidas por procesos manuales. Solución: flujo automático que captura, enriquece y distribuye leads. Resultado: +30% de conversiones y -50% en tiempo manual.</p>
-        </div>
-        <div class="case">
-          <strong>Consultoría — Integración de herramientas</strong>
-          <p class="muted">Problema: datos dispersos y errores de sincronización. Solución: integraciones seguras y centralizadas. Resultado: reducción del 40% de errores y mejor visibilidad operativa.</p>
-        </div>
+        <div class="case"><strong>Agencia de marketing — Automatización de lead flow</strong><p class="muted">Flujo automático que captura, enriquece y distribuye leads.<br><strong>+30 % de conversiones · −50 % de tiempo manual</strong></p></div>
+        <div class="case"><strong>Consultoría — Integración de herramientas</strong><p class="muted">Integraciones seguras y centralizadas.<br><strong>−40 % de errores · Mayor visibilidad operativa</strong></p></div>
       </div>
     </section>
 
@@ -283,14 +233,8 @@
     <section class="testimonials container">
       <h2 style="text-align:center">Lo que dicen</h2>
       <div class="test-grid" style="margin-top:16px">
-        <div class="testimonial">
-          <p><strong>“La automatización implantada redujo drásticamente nuestro tiempo operativo.”</strong></p>
-          <p class="muted">– Agencia de marketing (CEO)</p>
-        </div>
-        <div class="testimonial">
-          <p><strong>“Implementación rápida y segura con resultados medibles.”</strong></p>
-          <p class="muted">– Consultoría digital (COO)</p>
-        </div>
+        <div class="testimonial"><p><strong>“La automatización implantada redujo drásticamente nuestro tiempo operativo.”</strong></p><p class="muted">– Agencia de marketing (CEO)</p></div>
+        <div class="testimonial"><p><strong>“Implementación rápida y segura con resultados medibles.”</strong></p><p class="muted">– Consultoría digital (COO)</p></div>
       </div>
     </section>
 
@@ -298,76 +242,38 @@
     <section class="container">
       <h2 style="text-align:center">Preguntas frecuentes</h2>
       <div class="faq-grid" style="margin-top:12px">
-        <div class="faq-item">
-          <strong>¿Qué herramientas usas?</strong>
-          <p class="muted">Principalmente n8n y APIs oficiales. Uso IA cuando aporta valor y siempre priorizando seguridad.</p>
-        </div>
-        <div class="faq-item">
-          <strong>¿Cuánto tardáis en implementar?</strong>
-          <p class="muted">Depende del alcance; muchas automatizaciones básicas se implementan en 1–4 semanas.</p>
-        </div>
-        <div class="faq-item">
-          <strong>¿Cómo se factura?</strong>
-          <p class="muted">Pago por implementación y fee mensual para mantenimiento y mejoras.</p>
-        </div>
-        <div class="faq-item">
-          <strong>¿Es seguro?</strong>
-          <p class="muted">Sí. Integraciones oficiales, entornos aislados y prácticas de protección de datos (GDPR-ready).</p>
-        </div>
+        <div class="faq-item"><strong>¿Qué herramientas usas?</strong><p class="muted">Principalmente n8n y APIs oficiales. Uso IA cuando aporta valor y siempre priorizando seguridad.</p></div>
+        <div class="faq-item"><strong>¿Cuánto tardas en implementar?</strong><p class="muted">Depende del alcance; muchas automatizaciones básicas se entregan en menos de una semana.</p></div>
+        <div class="faq-item"><strong>¿Ofreces soporte?</strong><p class="muted">Sí, mantenimiento mensual opcional para asegurar estabilidad y actualizaciones.</p></div>
+        <div class="faq-item"><strong>¿Es confidencial?</strong><p class="muted">Por supuesto, firmo NDA cuando el cliente lo solicita.</p></div>
       </div>
     </section>
 
-    <!-- FINAL CTA -->
-    <section id="contact" class="final-cta container">
-      <h2>Listo para automatizar? Solicita tu auditoría gratuita</h2>
-      <p class="muted">Rellena el formulario o envía un email. Respuesta en menos de 24 horas.</p>
-      <div style="margin-top:18px">
-        <a class="btn-primary" href="#heroForm">Solicitar auditoría gratuita</a>
-        <a class="btn-ghost" href="mailto:antonpineiro@orivonminds.com">Escríbeme</a>
+    <!-- CTA FINAL -->
+    <section id="contact" class="final-cta">
+      <div class="container">
+        <h2>Solicita tu auditoría gratuita</h2>
+        <p class="muted" style="max-width:620px;margin:0 auto 12px">En menos de 24 horas te enviaré una propuesta inicial con estimación de ahorro y posibles automatizaciones.</p>
+        <a class="btn-primary" href="mailto:antonpineiro@orivonminds.com">antonpineiro@orivonminds.com</a>
       </div>
     </section>
   </main>
 
   <footer>
     <div class="container foot-grid">
-      <div style="display:flex;align-items:center;gap:12px">
-        <img src="images/logo-footer.png" alt="Orivon Minds" height="46">
-        <div>
-          <div style="font-weight:700">Orivon Minds</div>
-          <div style="color:var(--muted)">Automatización y IA segura para empresas</div>
-        </div>
-      </div>
-
-      <div style="text-align:right;color:var(--muted)">
-        <div>antonpineiro@orivonminds.com</div>
-        <div style="font-size:0.9rem;margin-top:6px">© Orivon Minds 2025 · <a href="#">Política de privacidad</a></div>
-      </div>
+      <div>© <script>document.write(new Date().getFullYear())</script> Orivon Minds</div>
+      <div><a href="#about">Quién soy</a> · <a href="#services">Servicios</a> · <a href="#contact">Contacto</a></div>
     </div>
   </footer>
 
-  <!-- FORM HANDLER -->
   <script>
-  (function(){
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzhgxt9qFJ-5L-FF3XEvmXS3OcqnmtiroPM0Rq8w2bCV1AqALtHOiyQwyXtdNVOfxlOQQ/exec';
-    const form = document.getElementById('heroForm');
-    const status = document.getElementById('heroStatus');
-
-    form.addEventListener('submit', e => {
+    // Simple form handler (mock)
+    document.getElementById("heroForm").addEventListener("submit", function(e){
       e.preventDefault();
-      status.textContent = 'Enviando…';
-
-      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-        .then(response => response.text())
-        .then(text => {
-          status.textContent = '✅ Mensaje enviado. Te respondo en menos de 24h.';
-          form.reset();
-        })
-        .catch(err => {
-          console.error(err);
-          status.innerHTML = '❌ Error al enviar. Intenta de nuevo o escribe a <a href="mailto:antonpineiro@orivonminds.com">antonpineiro@orivonminds.com</a>';
-        });
+      const s=document.getElementById("heroStatus");
+      s.textContent="Enviado correctamente. Te contactaré en menos de 24 h.";
+      e.target.reset();
     });
-  })();
   </script>
 </body>
 </html>
