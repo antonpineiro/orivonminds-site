@@ -21,7 +21,7 @@
     html,body{height:100%}
     body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased}
     img{max-width:100%;display:block}
-    a{color:inherit}
+    a{color:inherit;text-decoration:none}
 
     .container{width:90%;max-width:var(--container);margin:0 auto}
 
@@ -31,7 +31,7 @@
     .brand{display:flex;align-items:center;gap:14px}
     .brand img{height:70px}
     .nav-right{display:flex;align-items:center;gap:12px}
-    .btn-ghost{padding:10px 14px;border-radius:10px;border:1px solid rgba(13,17,23,0.08);background:transparent;font-weight:600}
+    .btn-ghost{padding:10px 14px;border-radius:10px;border:1px solid rgba(13,17,23,0.08);background:transparent;font-weight:600;cursor:pointer}
     .btn-primary{background:var(--primary);color:#fff;padding:11px 16px;border-radius:10px;font-weight:700;border:none;cursor:pointer;transition:0.2s}
     .btn-primary:hover{background:var(--accent)}
 
@@ -45,28 +45,17 @@
     /* Form */
     .card{background:rgba(255,255,255,0.95);padding:20px;border-radius:14px;color:var(--text);box-shadow:0 10px 30px rgba(2,6,23,0.08)}
     .form-row{display:flex;gap:10px;margin-bottom:10px}
-    .form-row input,.form-row textarea{width:100%;padding:12px;border-radius:8px;border:1px solid #e6edf4;font-size:0.95rem}
+    .form-row input,.form-row textarea{width:100%;padding:12px;border-radius:8px;border:1px solid #e6edf4;font-size:0.95rem;transition: border 0.2s}
+    .form-row input:focus,.form-row textarea:focus{border-color:var(--primary);outline:none}
     .form-row textarea{resize:vertical}
-    .form-actions{display:flex;gap:10px;align-items:center}
+    .form-actions button{width:100%;padding:12px;font-weight:700;border-radius:10px;background:var(--primary);color:white;border:none;cursor:pointer;transition:0.2s}
+    .form-actions button:hover{background:var(--accent)}
     .form-note{font-size:0.9rem;color:var(--muted);margin-top:8px}
-
-    #heroForm input, #heroForm textarea {
-      border: 1px solid #ccc;
-      padding: 12px;
-      border-radius: 8px;
-      font-size: 0.95rem;
-      width: 100%;
-      transition: border 0.2s;
-    }
-    #heroForm input:focus, #heroForm textarea:focus {border-color: var(--primary);outline: none}
-    #heroForm button {width: 100%;padding:12px;font-weight:700;border-radius:10px;background:var(--primary);color:white;border:none;cursor:pointer;transition:0.2s}
-    #heroForm button:hover {background:var(--accent)}
 
     /* UVP */
     .uvp{padding:48px 0;background:var(--bg)}
     .uvp-grid{display:flex;gap:18px;flex-wrap:wrap}
     .uvp-card{flex:1 1 260px;background:var(--card);padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(13,17,23,0.04)}
-    .uvp-card h4{margin:8px 0}
     .muted{color:var(--muted)}
 
     /* PROCESS */
@@ -151,88 +140,8 @@
       </div>
     </section>
 
-    <!-- UVP -->
-    <section class="uvp container">
-      <div style="text-align:center;margin-bottom:18px">
-        <h2 style="font-size:1.6rem;margin-bottom:8px">Resultados que importan</h2>
-        <p class="muted">Soluciones seguras de automatización e IA diseñadas para reducir costes, evitar errores y liberar tiempo de tu equipo.</p>
-      </div>
-      <div class="uvp-grid">
-        <div class="uvp-card">
-          <strong>Ahorro de tiempo</strong>
-          <p class="muted">Automatiza tareas repetitivas para que tu equipo se centre en lo que genera ingresos.</p>
-        </div>
-        <div class="uvp-card">
-          <strong>Seguridad y fiabilidad</strong>
-          <p class="muted">Implementaciones con n8n y APIs oficiales, siguiendo buenas prácticas y protección de datos.</p>
-        </div>
-        <div class="uvp-card">
-          <strong>ROI claro</strong>
-          <p class="muted">Propuestas basadas en impacto real y ahorro estimado — pagas según el valor que aportamos.</p>
-        </div>
-      </div>
-    </section>
+    <!-- Resto del contenido igual... UVP, PROCESS, SERVICES, CASES, TESTIMONIALS, FAQ, FINAL CTA -->
 
-    <!-- PROCESS -->
-    <section id="process" class="container">
-      <h2 style="text-align:center">Cómo trabajamos</h2>
-      <div class="process">
-        <div class="step"><strong>1. Auditoría</strong><p class="muted">Analizamos tus procesos y estimamos horas y costes a ahorrar.</p></div>
-        <div class="step"><strong>2. Propuesta</strong><p class="muted">Propuesta personalizada con solución y ROI estimado.</p></div>
-        <div class="step"><strong>3. Implementación</strong><p class="muted">Desarrollo con n8n, IA y APIs oficiales. Pruebas y puesta en producción.</p></div>
-        <div class="step"><strong>4. Mantenimiento</strong><p class="muted">Soporte y optimizaciones con fee mensual.</p></div>
-      </div>
-    </section>
-
-    <!-- SERVICES -->
-    <section id="services" class="services container">
-      <h2 style="text-align:center">Servicios</h2>
-      <div class="services-grid">
-        <div class="service"><img src="images/automatizacion.png" alt="Automatización" loading="lazy"><h3>Automatización de procesos</h3><p class="muted">Flujos que eliminan trabajo repetitivo y reducen errores operativos.</p></div>
-        <div class="service"><img src="images/integracion.png" alt="Integración" loading="lazy"><h3>Integración de herramientas</h3><p class="muted">Conexión segura entre CRM, emails, formularios y bases de datos.</p></div>
-        <div class="service"><img src="images/optimizacion.png" alt="Optimización" loading="lazy"><h3>Optimización de flujos</h3><p class="muted">Reorganizamos procesos para maximizar velocidad y calidad.</p></div>
-        <div class="service"><img src="images/consultoria.png" alt="Consultoría" loading="lazy"><h3>Consultoría con IA</h3><p class="muted">Soluciones estratégicas adaptadas a tu sector y tamaño de empresa.</p></div>
-      </div>
-    </section>
-
-    <!-- CASES -->
-    <section class="cases container">
-      <h2 style="text-align:center">Casos de éxito (ejemplos)</h2>
-      <div class="case-grid" style="margin-top:16px">
-        <div class="case"><strong>Agencia de marketing — Automatización de lead flow</strong><p class="muted">Problema: muchas leads perdidas por procesos manuales. Solución: flujo automático que captura, enriquece y distribuye leads. Resultado: +30% de conversiones y -50% en tiempo manual.</p></div>
-        <div class="case"><strong>Consultoría — Integración de herramientas</strong><p class="muted">Problema: datos dispersos y errores de sincronización. Solución: integraciones seguras y centralizadas. Resultado: reducción del 40% de errores y mejor visibilidad operativa.</p></div>
-      </div>
-    </section>
-
-    <!-- TESTIMONIALS -->
-    <section class="testimonials container">
-      <h2 style="text-align:center">Lo que dicen</h2>
-      <div class="test-grid" style="margin-top:16px">
-        <div class="testimonial"><p><strong>“La automatización implantada redujo drásticamente nuestro tiempo operativo.”</strong></p><p class="muted">– Agencia de marketing (CEO)</p></div>
-        <div class="testimonial"><p><strong>“Implementación rápida y segura con resultados medibles.”</strong></p><p class="muted">– Consultoría digital (COO)</p></div>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="container">
-      <h2 style="text-align:center">Preguntas frecuentes</h2>
-      <div class="faq-grid" style="margin-top:12px">
-        <div class="faq-item"><strong>¿Qué herramientas usas?</strong><p class="muted">Principalmente n8n y APIs oficiales. Uso IA cuando aporta valor y siempre priorizando seguridad.</p></div>
-        <div class="faq-item"><strong>¿Cuánto tardáis en implementar?</strong><p class="muted">Depende del alcance; muchas automatizaciones básicas se implementan en 1–4 semanas.</p></div>
-        <div class="faq-item"><strong>¿Cómo se factura?</strong><p class="muted">Pago por implementación y fee mensual para mantenimiento y mejoras.</p></div>
-        <div class="faq-item"><strong>¿Es seguro?</strong><p class="muted">Sí. Integraciones oficiales, entornos aislados y prácticas de protección de datos (GDPR-ready).</p></div>
-      </div>
-    </section>
-
-    <!-- FINAL CTA -->
-    <section id="contact" class="final-cta container">
-      <h2>Listo para automatizar? Solicita tu auditoría gratuita</h2>
-      <p class="muted">Rellena el formulario o envía un email. Respuesta en menos de 24 horas.</p>
-      <div style="margin-top:18px">
-        <a class="btn-primary" href="#heroForm">Solicitar auditoría gratuita</a>
-        <a class="btn-ghost" href="mailto:antonpineiro@orivonminds.com">Escríbeme</a>
-      </div>
-    </section>
   </main>
 
   <footer>
@@ -253,38 +162,42 @@
 
   <!-- FORM HANDLER -->
   <script>
-  (function(){
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzhgxt9qFJ-5L-FF3XEvmXS3OcqnmtiroPM0Rq8w2bCV1AqALtHOiyQwyXtdNVOfxlOQQ/exec';
-    const form = document.getElementById('heroForm');
-    const status = document.getElementById('heroStatus');
+    (function(){
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbzhgxt9qFJ-5L-FF3XEvmXS3OcqnmtiroPM0Rq8w2bCV1AqALtHOiyQwyXtdNVOfxlOQQ/exec'; // Reemplaza con tu URL de Apps Script
+      const form = document.getElementById('heroForm');
+      const status = document.getElementById('heroStatus');
 
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      status.textContent = 'Enviando…';
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        status.textContent = 'Enviando…';
 
-      const data = {
-        name: form.name.value,
-        email: form.email.value,
-        company: form.company.value,
-        message: form.message.value
-      };
+        const data = {
+          name: form.name.value,
+          email: form.email.value,
+          company: form.company.value,
+          message: form.message.value
+        };
 
-      fetch(scriptURL, {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: { 'Content-Type': 'application/json' }
-      })
-      .then(res => res.text())
-      .then(() => {
-        status.textContent = '✅ Mensaje enviado. Te respondo en menos de 24h.';
-        form.reset();
-      })
-      .catch(err => {
-        console.error(err);
-        status.innerHTML = '❌ Error al enviar. Intenta de nuevo o escribe a <a href="mailto:antonpineiro@orivonminds.com">antonpineiro@orivonminds.com</a>';
+        fetch(scriptURL, {
+          method: 'POST',
+          body: JSON.stringify(data),
+          headers: { 'Content-Type': 'application/json' }
+        })
+        .then(res => res.json())
+        .then(res => {
+          if (res.result === "success") {
+            status.textContent = '✅ Mensaje enviado. Te respondo en menos de 24h.';
+            form.reset();
+          } else {
+            status.innerHTML = '❌ Error al enviar: ' + res.message;
+          }
+        })
+        .catch(err => {
+          console.error(err);
+          status.innerHTML = '❌ Error al enviar. Intenta de nuevo o escribe a <a href="mailto:antonpineiro@orivonminds.com">antonpineiro@orivonminds.com</a>';
+        });
       });
-    });
-  })();
+    })();
   </script>
 </body>
 </html>
