@@ -307,27 +307,66 @@
     </section>
 
     <!-- FAQ -->
-        <section class="container faq">
-      <h2 style="text-align:center">Preguntas frecuentes</h2>
-      <div class="faq-grid" style="margin-top:12px">
-        <div class="faq-item">
-          <strong>¿Qué herramientas usas?</strong>
-          <p class="muted">Principalmente n8n y APIs oficiales. Uso IA cuando aporta valor y siempre priorizando seguridad.</p>
-        </div>
-        <div class="faq-item">
-          <strong>¿Cuánto tardáis en implementar?</strong>
-          <p class="muted">Depende del alcance; muchas automatizaciones básicas se implementan en 1–4 semanas.</p>
-        </div>
-        <div class="faq-item">
-          <strong>¿Cómo se factura?</strong>
-          <p class="muted">Pago por implementación y fee mensual para mantenimiento y mejoras.</p>
-        </div>
-        <div class="faq-item">
-          <strong>¿Es seguro?</strong>
-          <p class="muted">Sí. Integraciones oficiales, entornos aislados y prácticas de protección de datos (GDPR-ready).</p>
-        </div>
+<section class="container faq">
+  <h2 style="text-align:center">Preguntas frecuentes</h2>
+  <div class="faq-grid" style="margin-top:12px; max-width:600px; margin-left:auto; margin-right:auto;">
+
+    <div class="faq-item" style="margin-bottom:10px; border-bottom:1px solid #ddd; padding-bottom:8px;">
+      <button class="faq-question" style="width:100%; text-align:left; background:none; border:none; font-weight:bold; font-size:1rem; cursor:pointer; padding:8px 0;">
+        ¿Qué herramientas usas?
+      </button>
+      <div class="faq-answer" style="display:none; padding-left:8px; color:#666;">
+        Principalmente n8n y APIs oficiales. Uso IA cuando aporta valor y siempre priorizando seguridad.
       </div>
-    </section>
+    </div>
+
+    <div class="faq-item" style="margin-bottom:10px; border-bottom:1px solid #ddd; padding-bottom:8px;">
+      <button class="faq-question" style="width:100%; text-align:left; background:none; border:none; font-weight:bold; font-size:1rem; cursor:pointer; padding:8px 0;">
+        ¿Cuánto tardáis en implementar?
+      </button>
+      <div class="faq-answer" style="display:none; padding-left:8px; color:#666;">
+        Depende del alcance; muchas automatizaciones básicas se implementan en 1–4 semanas.
+      </div>
+    </div>
+
+    <div class="faq-item" style="margin-bottom:10px; border-bottom:1px solid #ddd; padding-bottom:8px;">
+      <button class="faq-question" style="width:100%; text-align:left; background:none; border:none; font-weight:bold; font-size:1rem; cursor:pointer; padding:8px 0;">
+        ¿Cómo se factura?
+      </button>
+      <div class="faq-answer" style="display:none; padding-left:8px; color:#666;">
+        Pago por implementación y fee mensual para mantenimiento y mejoras.
+      </div>
+    </div>
+
+    <div class="faq-item" style="margin-bottom:10px; border-bottom:1px solid #ddd; padding-bottom:8px;">
+      <button class="faq-question" style="width:100%; text-align:left; background:none; border:none; font-weight:bold; font-size:1rem; cursor:pointer; padding:8px 0;">
+        ¿Es seguro?
+      </button>
+      <div class="faq-answer" style="display:none; padding-left:8px; color:#666;">
+        Sí. Integraciones oficiales, entornos aislados y prácticas de protección de datos (GDPR-ready).
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  // Selecciona todos los botones de las preguntas
+  const faqButtons = document.querySelectorAll('.faq-question');
+
+  faqButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const answer = button.nextElementSibling;
+
+      // Alterna mostrar/ocultar
+      if(answer.style.display === "none" || answer.style.display === "") {
+        answer.style.display = "block";
+      } else {
+        answer.style.display = "none";
+      }
+    });
+  });
+</script>
 
     <!-- FINAL CTA -->
     <section id="contact" class="final-cta container">
