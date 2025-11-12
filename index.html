@@ -32,7 +32,7 @@
     .brand img{height:70px}
     .nav-right{display:flex;align-items:center;gap:12px}
     .btn-ghost{padding:10px 14px;border-radius:10px;border:1px solid rgba(13,17,23,0.08);background:transparent;font-weight:600}
-    .btn-primary{background:var(--primary);color:#fff;padding:11px 16px;border-radius:10px;font-weight:700;border:none}
+    .btn-primary{background:var(--primary);color:#fff;padding:11px 16px;border-radius:10px;font-weight:700;border:none;cursor:pointer}
 
     /* HERO */
     .hero{padding:64px 0;background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff}
@@ -43,11 +43,41 @@
 
     /* Form */
     .card{background:rgba(255,255,255,0.95);padding:20px;border-radius:14px;color:var(--text);box-shadow:0 10px 30px rgba(2,6,23,0.08)}
-    .form-row{display:flex;gap:10px}
+    .form-row{display:flex;gap:10px;margin-bottom:10px}
     .form-row input,.form-row textarea,select{width:100%;padding:12px;border-radius:8px;border:1px solid #e6edf4;font-size:0.95rem}
     .form-row textarea{resize:vertical}
     .form-actions{display:flex;gap:10px;align-items:center}
     .form-note{font-size:0.9rem;color:var(--muted);margin-top:8px}
+
+    #heroForm input, #heroForm textarea {
+      border: 1px solid #ccc;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      width: 100%;
+      transition: border 0.2s;
+    }
+
+    #heroForm input:focus, #heroForm textarea:focus {
+      border-color: var(--primary);
+      outline: none;
+    }
+
+    #heroForm button {
+      width: 100%;
+      padding: 12px;
+      font-weight: 700;
+      border-radius: 10px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    #heroForm button:hover {
+      background: var(--accent);
+    }
 
     /* UVP */
     .uvp{padding:48px 0;background:var(--bg)}
@@ -132,16 +162,28 @@
         <!-- FORM in HERO -->
         <aside class="card" aria-labelledby="form-hero-title">
           <h3 id="form-hero-title" style="margin:0 0 8px">Solicita tu auditoría (30s)</h3>
-          <p class="muted" style="margin:0 0 12px">Rellena tu nombre y email y te envío un plan inicial y estimación de ahorro.</p>
+          <p class="muted" style="margin:0 0 12px">
+            Rellena tu nombre y email y te envío un plan inicial y estimación de ahorro.
+          </p>
 
-         <form id="leadForm" method="POST" action="https://script.google.com/macros/s/AKfycbzMwgGcx6a0mSsGnnoWgxY7mOZMBlCjgrWbnBmhJVl8KiV12_LFX-YHfbpt1IgV_h7qDA/exec">
-  <input type="text" name="name" placeholder="Tu nombre" required>
-  <input type="email" name="email" placeholder="Tu correo" required>
-  <input type="text" name="company" placeholder="Nombre de tu empresa">
-  <textarea name="message" placeholder="¿Qué procesos te llevan más tiempo o crees que se podrían automatizar en tu empresa?" required></textarea>
-  <button type="submit">Solicitar auditoría gratuita</button>
-  <p id="form-status" style="margin-top: 1rem; font-weight: 500;"></p>
-</form>
+          <form id="heroForm">
+            <div class="form-row">
+              <input type="text" name="name" placeholder="Tu nombre" required>
+            </div>
+            <div class="form-row">
+              <input type="email" name="email" placeholder="Tu correo" required>
+            </div>
+            <div class="form-row">
+              <input type="text" name="company" placeholder="Nombre de tu empresa">
+            </div>
+            <div class="form-row">
+              <textarea name="message" placeholder="¿Qué procesos te llevan más tiempo o crees que se podrían automatizar en tu empresa?" required></textarea>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn-primary">Solicitar auditoría gratuita</button>
+            </div>
+            <p id="heroStatus" class="form-note"></p>
+          </form>
         </aside>
       </div>
     </section>
@@ -275,12 +317,12 @@
       </div>
     </section>
 
-    <!-- FINAL CTA WITH FORM REFERENCE -->
+    <!-- FINAL CTA -->
     <section id="contact" class="final-cta container">
       <h2>Listo para automatizar? Solicita tu auditoría gratuita</h2>
       <p class="muted">Rellena el formulario o envía un email. Respuesta en menos de 24 horas.</p>
       <div style="margin-top:18px">
-        <a class="btn-primary" href="#form-top">Solicitar auditoría gratuita</a>
+        <a class="btn-primary" href="#heroForm">Solicitar auditoría gratuita</a>
         <a class="btn-ghost" href="mailto:antonpineiro@orivonminds.com">Escríbeme</a>
       </div>
     </section>
@@ -303,28 +345,29 @@
     </div>
   </footer>
 
-  <!-- FORM HANDLER: heroForm -->
+  <!-- FORM HANDLER -->
   <script>
-    (function(){
-      const scriptURL = 'https://script.google.com/macros/s/AKfycbzMwgGcx6a0mSsGnnoWgxY7mOZMBlCjgrWbnBmhJVl8KiV12_LFX-YHfbpt1IgV_h7qDA/exec';
-      const heroForm = document.getElementById('heroForm');
-      const heroStatus = document.getElementById('heroStatus');
-      if(!heroForm) return;
-      heroForm.addEventListener('submit', function(e){
-        e.preventDefault();
-        heroStatus.textContent = 'Enviando…';
-        fetch(scriptURL, { method: 'POST', body: new FormData(heroForm) })
-          .then(response => response.text())
-          .then(() => {
-            heroStatus.textContent = '✅ Mensaje enviado. Te respondo en menos de 24h.';
-            heroForm.reset();
-          })
-          .catch(err => {
-            console.error(err);
-            heroStatus.innerHTML = '❌ Error al enviar. Intenta de nuevo o escribe a <a href="mailto:antonpineiro@orivonminds.com">antonpineiro@orivonminds.com</a>';
-          });
-      });
-    })();
+  (function(){
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzMwgGcx6a0mSsGnnoWgxY7mOZMBlCjgrWbnBmhJVl8KiV12_LFX-YHfbpt1IgV_h7qDA/exec';
+    const form = document.getElementById('heroForm');
+    const status = document.getElementById('heroStatus');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      status.textContent = 'Enviando…';
+
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => response.text())
+        .then(text => {
+          status.textContent = '✅ Mensaje enviado. Te respondo en menos de 24h.';
+          form.reset();
+        })
+        .catch(err => {
+          console.error(err);
+          status.innerHTML = '❌ Error al enviar. Intenta de nuevo o escribe a <a href="mailto:antonpineiro@orivonminds.com">antonpineiro@orivonminds.com</a>';
+        });
+    });
+  })();
   </script>
 </body>
 </html>
