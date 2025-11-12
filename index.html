@@ -134,18 +134,14 @@
           <h3 id="form-hero-title" style="margin:0 0 8px">Solicita tu auditoría (30s)</h3>
           <p class="muted" style="margin:0 0 12px">Rellena tu nombre y email y te envío un plan inicial y estimación de ahorro.</p>
 
-          <form id="heroForm" style="display:flex;flex-direction:column;gap:10px">
-            <input type="text" name="name" placeholder="Nombre" required>
-            <input type="email" name="email" placeholder="Correo" required>
-            <input type="text" name="company" placeholder="Empresa / Sector">
-            <textarea name="message" rows="3" placeholder="¿Qué proceso te consume tiempo?"></textarea>
-            <div style="display:flex;gap:10px;align-items:center">
-              <button class="btn-primary" type="submit">Solicitar auditoría</button>
-              <a class="btn-ghost" href="mailto:antonpineiro@orivonminds.com">Contactar por email</a>
-            </div>
-            <div class="form-note">Sin compromiso · Respuesta en 24 horas</div>
-            <div id="heroStatus" style="font-size:0.95rem;color:var(--text)"></div>
-          </form>
+         <form id="leadForm" method="POST" action="https://script.google.com/macros/s/AKfycbzMwgGcx6a0mSsGnnoWgxY7mOZMBlCjgrWbnBmhJVl8KiV12_LFX-YHfbpt1IgV_h7qDA/exec">
+  <input type="text" name="name" placeholder="Tu nombre" required>
+  <input type="email" name="email" placeholder="Tu correo" required>
+  <input type="text" name="company" placeholder="Nombre de tu empresa">
+  <textarea name="message" placeholder="¿Qué procesos te llevan más tiempo o crees que se podrían automatizar en tu empresa?" required></textarea>
+  <button type="submit">Solicitar auditoría gratuita</button>
+  <p id="form-status" style="margin-top: 1rem; font-weight: 500;"></p>
+</form>
         </aside>
       </div>
     </section>
